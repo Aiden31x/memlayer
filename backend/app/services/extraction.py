@@ -7,4 +7,4 @@ class ExtractionService:
 
         #TODO: Implement the extraction logic
 
-        return ExtractionResponse(facts=[ExtractedFact(category="test", key="test", value="test", confidence=0.9, evidence="test")])
+        return ExtractionResponse(facts=[ExtractedFact  (category="test", key="test", value="test", confidence=0.9, evidence="test")])
