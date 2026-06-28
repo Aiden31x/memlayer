@@ -1,0 +1,33 @@
+# Python (api/, sdk/)
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+env/
+*.egg-info/
+build/
+dist/
+.pytest_cache/
+
+# Environment variables — NEVER commit real secrets
+.env
+*.env.local
+
+# Node / Next.js (frontend/)
+node_modules/
+.next/
+out/
+.turbo/
+
+# LanceDB local data — this is your local vector DB files, not source code
+lancedb_data/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.swp
