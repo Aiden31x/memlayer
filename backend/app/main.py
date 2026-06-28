@@ -1,4 +1,4 @@
-from backend.app.routers import memories
+from app.routers import memories
 from fastapi import FastAPI
 
 app=FastAPI(

@@ -1,4 +1,4 @@
-from app.models.schemas import ConversationRequest, ExtractionResponse
+from app.models.schemas import ConversationRequest, ExtractedFact, ExtractionResponse
 
 class ExtractionService:
 
@@ -7,4 +7,4 @@ class ExtractionService:
 
         #TODO: Implement the extraction logic
 
-        return ExtractionResponse(facts=[])
+        return ExtractionResponse(facts=[ExtractedFact(category="test", key="test", value="test", confidence=0.9, evidence="test")])
