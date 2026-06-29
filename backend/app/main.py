@@ -14,11 +14,15 @@ def root():
     return {
         "message": " Memory API is running"
     }
+
+
 @app.get("/health")
 def health():
     return {
         "status": "ok"
     }
+
+
 @app.post("/extract")
 async def extract_facts(request: ConversationRequest):
     extracted = await memories.extraction_service.extract_facts(request)
