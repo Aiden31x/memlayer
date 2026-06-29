@@ -16,6 +16,6 @@ def get_memories():
 
 
 @router.post("/", response_model=ExtractionResponse)
-def create_memory(request: ConversationRequest):
-    extracted = extraction_service.extract_facts(request)
+async def create_memory(request: ConversationRequest):
+    extracted = await extraction_service.extract_facts(request)
     return extracted

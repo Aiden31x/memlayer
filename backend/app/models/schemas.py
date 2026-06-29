@@ -8,6 +8,7 @@ class Message(BaseModel):
 
 
 class ConversationRequest(BaseModel):
+    user_id: str
     messages: List[Message]
 
 

@@ -1,4 +1,5 @@
 from app.routers import memories
+from app.models.schemas import ConversationRequest
 from fastapi import FastAPI
 
 app=FastAPI(
@@ -18,3 +19,7 @@ def health():
     return {
         "status": "ok"
     }
+@app.post("/extract")
+async def extract_facts(request: ConversationRequest):
+    extracted = await memories.extraction_service.extract_facts(request)
+    return extracted
