@@ -1,5 +1,8 @@
 from app.routers import memories
 from app.models.schemas import ConversationRequest
+
+
+from backend.app.db.qdrant_service import QdrantService
 from fastapi import FastAPI
 
 app=FastAPI(
@@ -27,3 +30,14 @@ def health():
 async def extract_facts(request: ConversationRequest):
     extracted = await memories.extraction_service.extract_facts(request)
     return extracted
+
+
+@app.on_event("startup")
+async def startup():
+    app.state.vector_store=QdrantService()
+
+    if not await app.state.vector_store.health_check():
+        raise RuntimeError("Vector store is not healthy")
+
+
+    await app.state.vector_store.ensure_collection_exists()
