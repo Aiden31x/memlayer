@@ -14,6 +14,8 @@ class Settings(BaseSettings):
    
     model_config = SettingsConfigDict(env_file='.env', extra='ignore')
 
+    postgres_db_url: str
+
 
 
 
