@@ -1,5 +1,5 @@
 from abc import ABC, abstractmethod
-from typing import Any
+from typing import Optional
 
 
 class VectorStore(ABC):
@@ -15,8 +15,10 @@ class VectorStore(ABC):
         self,
         memory_id: str,
         vector: list[float],
+        text: str,
+        category: str,
         user_id: str,
-        agent_id: str,
+        agent_id: Optional[str],
         status: str,
     ) -> None:
         """Upsert a memory into the vector store."""
@@ -27,24 +29,25 @@ class VectorStore(ABC):
         self,
         query_vector: list[float],
         user_id: str,
-        agent_id: str,
+        agent_id: Optional[str],
         top_k: int = 5,
     ) -> list[dict]:
-        """Search the vector store for the most similar memories."""
+        """Search the vector store for the most similar memories.
+
+        Each result dict contains: id, score, text, category.
+        """
         pass
+
     @abstractmethod
-    async def delete(
-        self,
-        memory_id: str,
-    ) -> None:
+    async def delete(self, memory_id: str) -> None:
         """Delete a memory from the vector store."""
         pass
-    
+
     @abstractmethod
     async def close(self) -> None:
         """Close the vector store."""
         pass
-    
+
     @abstractmethod
     async def health_check(self) -> bool:
         """Check the health of the vector store."""
