@@ -96,6 +96,13 @@ class QdrantService(VectorStore):
             for result in results
         ]
 
+    async def update_status(self, memory_id: str, status: str) -> None:
+        await self.client.set_payload(
+            collection_name=self.collection_name,
+            payload={"status": status},
+            points=[memory_id],
+        )
+
     async def delete(self, memory_id: str) -> None:
         await self.client.delete(
             collection_name=self.collection_name,

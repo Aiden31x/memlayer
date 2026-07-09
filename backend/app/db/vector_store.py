@@ -39,6 +39,11 @@ class VectorStore(ABC):
         pass
 
     @abstractmethod
+    async def update_status(self, memory_id: str, status: str) -> None:
+        """Update the status payload of an existing point without re-embedding."""
+        pass
+
+    @abstractmethod
     async def delete(self, memory_id: str) -> None:
         """Delete a memory from the vector store."""
         pass
